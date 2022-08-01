@@ -16,3 +16,11 @@ Clone the report locally: `git clone https://github.com/almorcrette/bank-teller-
 
 ## About the code
 
+### Avoiding a derived state
+
+
+
+### Immutable ledger
+
+
+

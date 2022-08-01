@@ -1,17 +1,20 @@
 import java.time.LocalDate
 
-class Ledger(val balance: Int = 0, val transactions: Seq[Transaction] = Seq()) {
+class Ledger(val transactions: Seq[Transaction] = Seq()) {
   def deposit(amount: Int, date: LocalDate): Ledger = {
     new Ledger(
-      balance + amount,
       transactions :+ new Transaction(amount, date)
     )
   }
 
   def withdraw(amount: Int, date: LocalDate): Ledger = {
     new Ledger(
-      balance - amount,
+
       transactions :+ new Transaction(-amount, date)
     )
+  }
+
+  def balance: Int = {
+    transactions.foldLeft(0)((runningBalance: Int, transaction: Transaction) => runningBalance + transaction.amount)
   }
 }

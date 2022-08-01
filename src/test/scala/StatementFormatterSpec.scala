@@ -1,5 +1,5 @@
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.worspec.AnyWordSpec
+import org.scalatest.wordspec.AnyWordSpec
 
 import java.time.LocalDate
 
@@ -22,7 +22,7 @@ class StatementFormatterSpec extends AnyWordSpec with Matchers {
           new Transaction(60, Day3),
           new Transaction(-50, Day2)
         )) shouldEqual (
-          "Amount,Date, Balance\n" +
+          "Amount,Date,Balance\n" +
           "60,1970-01-03,1010\n" +
           "-50,1970-01-02,950\n" +
           "1000,1970-01-01,1000\n"

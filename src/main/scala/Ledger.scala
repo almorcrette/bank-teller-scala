@@ -1,6 +1,7 @@
 import java.time.LocalDate
 
 class Ledger(val transactions: Seq[Transaction] = Seq()) {
+
   def deposit(amount: Int, date: LocalDate): Ledger = {
     new Ledger(
       transactions :+ new Transaction(amount, date)
@@ -8,8 +9,8 @@ class Ledger(val transactions: Seq[Transaction] = Seq()) {
   }
 
   def withdraw(amount: Int, date: LocalDate): Ledger = {
-    new Ledger(
 
+    new Ledger(
       transactions :+ new Transaction(-amount, date)
     )
   }

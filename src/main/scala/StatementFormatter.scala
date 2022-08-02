@@ -18,7 +18,7 @@ object StatementFormatter {
 
     @tailrec def recursiveFormatter(
                                      statementBuilder: mutable.StringBuilder,
-                                     startingBalance: Int,
+                                     startingBalance: Double,
                                      transactionsCountDown: Int
                                    ): String = {
       if (transactionsCountDown == 0) statementBuilder.toString
@@ -31,24 +31,34 @@ object StatementFormatter {
       }
     }
 
-    recursiveFormatter(new mutable.StringBuilder(), 0, transactions.length)
+    recursiveFormatter(new mutable.StringBuilder(), 0.0, transactions.length)
   }
 
   private def addToStatement(
                               statementBuilder: mutable.StringBuilder,
-                              startingBalance: Int,
+                              startingBalance: Double,
                               currentTransaction: Transaction
                             ): StringBuilder = {
     statementBuilder.addString(
       new mutable.StringBuilder(
-        formatLine(currentTransaction.amount, currentTransaction.date, startingBalance + currentTransaction.amount)
+        formatLine(
+          twoDPs(currentTransaction.amount),
+          currentTransaction.date,
+          twoDPs(startingBalance + currentTransaction.amount)
+        )
       )
     )
   }
+
+  private def formatLine(a: Any, b: Any, c: Any) = s"$a,$b,$c\n"
 
   private def addHeader(formattedTxns: String): String = {
     formatLine("Amount", "Date", "Balance").concat(formattedTxns)
   }
 
-  private def formatLine(a: Any, b: Any, c: Any) = s"$a,$b,$c\n"
+  private def twoDPs(amount: Double): String = {
+    "%1.2f".format(amount)
+  }
+
+
 }

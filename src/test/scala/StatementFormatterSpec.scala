@@ -23,9 +23,9 @@ class StatementFormatterSpec extends AnyWordSpec with Matchers {
           new Transaction(-50, Day2)
         )) shouldEqual (
           "Amount,Date,Balance\n" +
-          "60,1970-01-03,1010\n" +
-          "-50,1970-01-02,950\n" +
-          "1000,1970-01-01,1000\n"
+          "60.00,1970-01-03,1010.00\n" +
+          "-50.00,1970-01-02,950.00\n" +
+          "1000.00,1970-01-01,1000.00\n"
         )
       }
     }

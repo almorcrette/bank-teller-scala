@@ -1,8 +1,6 @@
 import java.time.LocalDate
 
-class Ledger(_transactions: Seq[Transaction] = Seq()) {
-  val transactions = _transactions
-}
+class Ledger(val transactions: Seq[Transaction] = Seq())
 
 object LedgerTools {
 

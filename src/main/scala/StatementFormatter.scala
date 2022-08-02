@@ -38,7 +38,7 @@ object StatementFormatter {
                               statementBuilder: mutable.StringBuilder,
                               startingBalance: Double,
                               currentTransaction: Transaction
-                            ): StringBuilder = {
+                            ): mutable.StringBuilder = {
     statementBuilder.addString(
       new mutable.StringBuilder(
         formatLine(
